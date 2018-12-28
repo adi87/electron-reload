@@ -77,7 +77,9 @@ module.exports = (glob, options = {}) => {
   })
 
   // Enable default soft reset
+  watcher.on('add', softResetHandler)
   watcher.on('change', softResetHandler)
+  watcher.on('unlink', softResetHandler)
 
   // Preparing hard reset if electron executable is given in options
   // A hard reset is only done when the main file has changed
